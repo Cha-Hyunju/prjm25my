@@ -17,6 +17,7 @@
    
    <select id="contentView" resultType="com.tech.prjm09.dto.BDto">
    SELECT BID,BNAME,BTITLE,BCONTENT,BDATE,BHIT,BGROUP,BSTEP,BINDENT FROM REPLYBOARD WHERE BID=#{param1}
+   FROM REPLYBOARD ORDER BY BGROUP DESC,BSTEP ASC  
    </select>
 
 </mapper>
