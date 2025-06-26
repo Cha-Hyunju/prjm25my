@@ -30,5 +30,18 @@
    <select id="reply_View" resultType="com.tech.prjm09.dto.BDto">
    SELECT BID,BNAME,BTITLE,BCONTENT,BDATE,BHIT,BGROUP,BSTEP,BINDENT FROM REPLYBOARD WHERE BID=#{param1}
    </select>
+   
+   <insert id="reply">
+   insert into replyboard(bid,bname,btitle,bcontent,bgroup,bstep,bindent)
+	VALUES(replyboard_seq.nextval,#{param2},#{param3},#{param4},#{param5},#{param6}+1,#{param7}+1)
+   </insert>
+   
+   <update id="replyShape">
+   UPDATE REPLYBOARD SET BSTEP=BSTEP+1 WHERE BGROUP=#{param1} AND BSTEP>#{param1}
+   </update>
+   
+   <delete id="delete">
+   DELETE FROM REPLYBOARD WHERE BID=${param1}
+   </delete>
 
 </mapper>
