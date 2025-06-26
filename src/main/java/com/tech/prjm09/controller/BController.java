@@ -89,18 +89,26 @@ public class BController {
 	
 	@RequestMapping("/modify")
 	private String modify(HttpServletRequest request,Model model) {
-		model.addAttribute("request", request);
-		command=new BModifyCommand();
-		command.execute(model);
+//		model.addAttribute("request", request);
+//		command=new BModifyCommand();
+//		command.execute(model);
+		String bid=request.getParameter("bid");
+		String bname=request.getParameter("bname");
+		String btitle=request.getParameter("btitle");
+		String bcontent=request.getParameter("bcontent");
+		iDao.modify(bid, bname, btitle, bcontent);
 		
 		return "redirect:list";
 	}
 	
 	@RequestMapping("/reply_view")
 	private String reply_view(HttpServletRequest request,Model model) {
-		model.addAttribute("request", request);
-		command=new BReplyViewCommand();
-		command.execute(model);
+//		model.addAttribute("request", request);
+//		command=new BReplyViewCommand();
+//		command.execute(model);
+		String bid=request.getParameter("bid");
+		BDto dto=iDao.reply_View(bid);
+		model.addAttribute("reply_view",dto);
 		
 		return "reply_view";
 	}

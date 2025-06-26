@@ -20,7 +20,15 @@
    </select>
    
    <select id="modifyView" resultType="com.tech.prjm09.dto.BDto">
-   SELECT BID,BNAME,BTITLE,BCONTENT,BDATE,BHIT,BGROUP,BSTEP,BINDENT FROM REPLYBOARD WHERE BID=#{PARAM1}
+   SELECT BID,BNAME,BTITLE,BCONTENT,BDATE,BHIT,BGROUP,BSTEP,BINDENT FROM REPLYBOARD WHERE BID=#{param1}
+   </select>
+   
+   <update id="modify">
+   UPDATE REPLYBOARD SET BNAME=#{param2},BTITLE=#{param3},BCONTENT=#{param4} WHERE BID=#{param1}
+   </update>
+   
+   <select id="reply_View" resultType="com.tech.prjm09.dto.BDto">
+   SELECT BID,BNAME,BTITLE,BCONTENT,BDATE,BHIT,BGROUP,BSTEP,BINDENT FROM REPLYBOARD WHERE BID=#{param1}
    </select>
 
 </mapper>
